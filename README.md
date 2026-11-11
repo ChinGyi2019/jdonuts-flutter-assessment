@@ -67,4 +67,4 @@ The APK is written to `build/app/outputs/flutter-apk/app-release.apk`. It uses t
 
 Authentication, social sign-in, cart feedback, and rewards redemption are demo flows. No real SMS, checkout, or redemption service is connected. The bundled catalog is the refresh source. Android and iOS Simulator are the delivery targets, and browser SQLite is outside this build. Physical-device frame pacing was not benchmarked for this submission.
 
-Time spent on implementation and validation was **14 hours 40 minutes**, from 9:00 AM to 11:40 PM on 11 November 2026 (Kuala Lumpur time).
+Time spent on implementation and validation was **14 hours 27 minutes**, from 9:00 AM to 11:27 PM on 11 November 2026 (Bangkok time, UTC+7).
