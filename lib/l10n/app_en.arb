@@ -1,0 +1,245 @@
+{
+  "@@locale": "en",
+  "appTitle": "J'Donuts",
+  "onboardingTitle": "Round food for every mood",
+  "onboardingPending": "Sign in and registration are coming soon.",
+  "home": "Home",
+  "rewards": "Reward",
+  "discover": "Discover",
+  "orders": "Orders",
+  "settings": "Settings",
+  "logout": "Log out",
+  "loggingOut": "Logging out…",
+  "logoutError": "Couldn’t log out. Try again.",
+  "profileLoading": "Loading your member profile",
+  "profilePoints": "{points, plural, one{{points} reward point} other{{points} reward points}}",
+  "@profilePoints": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "placeholder": "Coming soon",
+  "sessionError": "Could not restore your session.",
+  "retry": "Try again",
+  "product": "Product",
+  "pageNotFound": "Page not found",
+  "getStarted": "LET’S GET STARTED",
+  "logIn": "Log In",
+  "loginPrompt": "Already have an account?",
+  "register": "Register",
+  "phoneTitle": "Enter your phone number",
+  "phoneLabel": "Mobile number",
+  "phoneError": "Enter a valid Myanmar phone number.",
+  "phonePrefixError": "Phone number must start with 09 or 9.",
+  "continueLabel": "CONTINUE",
+  "otpTitle": "Verify your number",
+  "otpLabel": "Verification code",
+  "otpError": "Incorrect code. Try again.",
+  "otpLocked": "Too many attempts. Wait until you can resend.",
+  "resend": "Resend",
+  "resendCountdown": "resend in {time} min",
+  "@resendCountdown": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "unknownPhone": "Number not registered.",
+  "nameTitle": "What’s your name?",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "nameError": "Use 1–50 letters and spaces.",
+  "birthTitle": "What’s your date of birth?",
+  "month": "Month",
+  "day": "Day",
+  "year": "Year",
+  "birthdayPickerTitle": "Select your Birthday",
+  "birthdayPickerSelect": "SELECT",
+  "loadingCatalog": "Loading catalog",
+  "dateError": "Enter a valid date; you must be at least 13.",
+  "welcomeTitle": "Welcome to the world of J’donuts",
+  "explore": "LET’S EXPLORE",
+  "notAvailable": "Coming soon",
+  "terms": "Terms of Use",
+  "privacy": "Privacy Policy",
+  "social": "Continue with {provider}",
+  "@social": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "authError": "Something went wrong. Please try again.",
+  "legalPrefix": "By continuing, you acknowledge that you have read and agree to our",
+  "legalAnd": "and",
+  "otpSent": "We’ve sent 6 digit OTP to {phone}",
+  "@otpSent": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "otpResendPrompt": "Didn’t receive the code?",
+  "seasonalSpecials": "Seasonal specials",
+  "popular": "Popular 🔥",
+  "orderAgain": "Order again",
+  "offlineCatalog": "You’re offline",
+  "memberTier": "{tier} member",
+  "@memberTier": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "tierPointsRemaining": "{points} points left to become {tier} Member",
+  "@tierPointsRemaining": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "notifications": "{count} notifications",
+  "@notifications": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "emptyMember": "Member profile unavailable.",
+  "emptyBanners": "No offers right now.",
+  "bannerLoadError": "Could not load offers.",
+  "memberLoadError": "Could not load your member profile.",
+  "emptyProducts": "No products in this section yet.",
+  "productSectionError": "Could not load this section.",
+  "emptyShops": "No nearby shops to show.",
+  "shopLoadError": "Could not load nearby shops.",
+  "refreshError": "Could not refresh the catalog.",
+  "nearbyShops": "{count, plural, one{There is 1 J’Donut shop near you.} other{There are {count} J’Donut shops near you.}} 😊",
+  "@nearbyShops": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "nearbyShopsTitle": "Nearby shops",
+  "exploreNow": "EXPLORE NOW",
+  "orderOnline": "Order Online",
+  "discountBadge": "{percent}% off",
+  "@discountBadge": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "moreInSection": "More in {section}",
+  "@moreInSection": {
+    "placeholders": {
+      "section": {
+        "type": "String"
+      }
+    }
+  },
+  "newProduct": "New",
+  "productDescriptionTitle": "What’s this?",
+  "addToCart": "ADD TO CART",
+  "cartItemCount": "{count, plural, =0{Cart, empty} =1{Cart, 1 item} other{Cart, {count} items}}",
+  "@cartItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addedToCart": "Added to cart",
+  "priceMmk": "{amount} MMK",
+  "@priceMmk": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "decreaseQuantity": "Decrease quantity",
+  "increaseQuantity": "Increase quantity",
+  "quantityLabel": "Quantity {count}",
+  "@quantityLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "productLoadError": "Could not load this product.",
+  "productNotFound": "This product could not be found.",
+  "rewardsTitle": "J’ Donuts Rewards",
+  "rewardsBadge": "Rewards",
+  "replayRewards": "Replay rewards animations",
+  "replayChallenge": "Replay challenge progress",
+  "totalRewardPoints": "Total points",
+  "rewardsPointsTotal": "{points}",
+  "@rewardsPointsTotal": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "currentRewardTier": "You’re here now",
+  "upcomingRewardTier": "You’ll be here soon",
+  "nextRewardTier": "{points} pts Remaining\nto become {tier}",
+  "@nextRewardTier": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "earnMoreTab": "Eat more earn more",
+  "giftTab": "Gift",
+  "emptyGifts": "No gifts yet",
+  "emptyChallenges": "No challenges right now.",
+  "rewardsLoading": "Loading rewards",
+  "rewardsLoadError": "Could not load rewards.",
+  "earnReward": "EARN",
+  "challengeQuantity": "{completed}/{target}",
+  "@challengeQuantity": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "challengePoints": "{points} pts",
+  "@challengePoints": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "language": "Language",
+  "languageSaveError": "Could not save language. Try again."
+}

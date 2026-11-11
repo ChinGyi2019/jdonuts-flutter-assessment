@@ -1,0 +1,245 @@
+{
+  "@@locale": "my",
+  "appTitle": "J'Donuts",
+  "onboardingTitle": "စိတ်ကြိုက်ရွေးချယ် အဝင်ပြေဖို့ ဝိုင်းဝိုင်းလေးတွေ စားကြစို့",
+  "onboardingPending": "အကောင့်ဝင်ခြင်းနှင့် အကောင့်သစ်ဖွင့်ခြင်းများကို မကြာမီ အသုံးပြုနိုင်တော့မည်။",
+  "home": "ပင်မ",
+  "rewards": "လက်ဆောင်",
+  "discover": "ရှာဖွေရန်",
+  "orders": "အမှာစာများ",
+  "settings": "ဆက်တင်များ",
+  "logout": "အကောင့်ထွက်ရန်",
+  "loggingOut": "အကောင့်ထွက်နေသည်…",
+  "logoutError": "အကောင့်ထွက်၍ မရပါ။ ထပ်မံကြိုးစားပါ။",
+  "profileLoading": "အဖွဲ့ဝင် ပရိုဖိုင်ကို ရယူနေသည်",
+  "profilePoints": "{points, plural, one{{points} ရမှတ်} other{{points} ရမှတ်}}",
+  "@profilePoints": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "placeholder": "မကြာမီ လာမည်",
+  "sessionError": "ယခင် အသုံးပြုမှုအား ပြန်လည်ရယူ၍ မရပါ။",
+  "retry": "ထပ်မံကြိုးစားရန်",
+  "product": "မုန့်အမျိုးအစား",
+  "pageNotFound": "စာမျက်နှာ ရှာမတွေ့ပါ",
+  "getStarted": "စတင်လိုက်ရအောင်",
+  "logIn": "အကောင့်ဝင်ရန်",
+  "loginPrompt": "အကောင့်ရှိပြီးသားလား။",
+  "register": "အကောင့်သစ်ဖွင့်ရန်",
+  "phoneTitle": "သင့်ဖုန်းနံပါတ် ထည့်ပါ",
+  "phoneLabel": "ဖုန်းနံပါတ်",
+  "phoneError": "မှန်ကန်သော မြန်မာဖုန်းနံပါတ် ရိုက်ထည့်ပါ။",
+  "phonePrefixError": "ဖုန်းနံပါတ်သည် 09 သို့မဟုတ် 9 ဖြင့် စရပါမည်။",
+  "continueLabel": "ဆက်လက်လုပ်ဆောင်ရန်",
+  "otpTitle": "သင့်ဖုန်းနံပါတ်ကို အတည်ပြုပါ",
+  "otpLabel": "အတည်ပြုကုဒ်",
+  "otpError": "အတည်ပြုကုဒ် မှားယွင်းနေပါသည်။ ထပ်မံကြိုးစားပါ။",
+  "otpLocked": "အကြိမ်အရေအတွက် အများလွန်းနေပါသည်။ ပြန်လည်မပို့မီ ခဏစောင့်ပါ။",
+  "resend": "ပြန်လည်ပို့မည်",
+  "resendCountdown": "{time} မိနစ်အကြာတွင် ပြန်လည်ပို့မည်",
+  "@resendCountdown": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "unknownPhone": "ဤနံပါတ်ဖြင့် အကောင့်မရှိသေးပါ။",
+  "nameTitle": "သင့်အမည် ဘယ်လိုခေါ်ပါသလဲ။",
+  "firstName": "အမည်ရှေ့ပိုင်း",
+  "lastName": "အမည်နောက်ပိုင်း",
+  "nameError": "စာလုံးနှင့် စာခြားကွက် (၁-၅၀) ခုအတွင်း အသုံးပြုပါ။",
+  "birthTitle": "သင့်မွေးသက္ကရာဇ် ဘယ်တော့လဲ။",
+  "month": "လ",
+  "day": "ရက်",
+  "year": "နှစ်",
+  "birthdayPickerTitle": "သင့်မွေးနေ့ ရွေးချယ်ပါ",
+  "birthdayPickerSelect": "ရွေးချယ်ရန်",
+  "loadingCatalog": "ပစ္စည်းစာရင်းများ ရယူနေသည်",
+  "dateError": "မှန်ကန်သော ရက်စွဲ ထည့်ပါ (အနည်းဆုံး အသက် ၁၃ နှစ် ရှိရမည်)။",
+  "welcomeTitle": "J’Donuts ကမ္ဘာမှ ကြိုဆိုပါသည်",
+  "explore": "စတင်ကြည့်ရှုကြစို့",
+  "notAvailable": "မကြာမီ လာမည်",
+  "terms": "အသုံးပြုမှု စည်းမျဉ်းများ",
+  "privacy": "ကိုယ်ရေးအချက်အလက် မူဝါဒ",
+  "social": "{provider} ဖြင့် ဆက်လက်လုပ်ဆောင်ရန်",
+  "@social": {
+    "placeholders": {
+      "provider": {
+        "type": "String"
+      }
+    }
+  },
+  "authError": "မှားယွင်းမှုတစ်ခု ဖြစ်ပေါ်နေပါသည်။ ထပ်မံကြိုးစားပါ။",
+  "legalPrefix": "ဆက်လက်လုပ်ဆောင်ခြင်းဖြင့် ကျွန်ုပ်တို့၏",
+  "legalAnd": "နှင့်",
+  "otpSent": "{phone} သို့ ၆ လုံးပါ OTP စာတို ပို့ပြီးပါပြီ",
+  "@otpSent": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "otpResendPrompt": "အတည်ပြုကုဒ် မရရှိဘူးလား။",
+  "seasonalSpecials": "ရာသီပေါ် အထူးမုန့်များ",
+  "popular": "လူကြိုက်များ 🔥",
+  "orderAgain": "ထပ်မံမှာယူရန်",
+  "offlineCatalog": "အင်တာနက် ချိတ်ဆက်ထားခြင်းမရှိပါ",
+  "memberTier": "{tier} အဖွဲ့ဝင်",
+  "@memberTier": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "tierPointsRemaining": "{tier} အဖွဲ့ဝင် ဖြစ်လာရန် {points} မှတ် လိုသေးသည်",
+  "@tierPointsRemaining": {
+    "placeholders": {
+      "points": {
+        "type": "String"
+      },
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "notifications": "အကြောင်းကြားချက် {count} ခု",
+  "@notifications": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "emptyMember": "အဖွဲ့ဝင် ပရိုဖိုင် မရှိသေးပါ။",
+  "emptyBanners": "လက်ရှိတွင် ပရိုမိုးရှင်း မရှိသေးပါ။",
+  "bannerLoadError": "ပရိုမိုးရှင်းများ ရယူ၍ မရပါ။",
+  "memberLoadError": "အဖွဲ့ဝင် ပရိုဖိုင်ကို ရယူ၍ မရပါ။",
+  "emptyProducts": "ဤကဏ္ဍတွင် မုန့်များ မရှိသေးပါ။",
+  "productSectionError": "ဤကဏ္ဍကို ရယူ၍ မရပါ။",
+  "emptyShops": "အနီးအနားတွင် ဆိုင်များ မရှိပါ။",
+  "shopLoadError": "အနီးအနားရှိ ဆိုင်များကို ရယူ၍ မရပါ။",
+  "refreshError": "စာရင်းများကို ပြန်လည်ရယူ၍ မရပါ။",
+  "nearbyShops": "{count, plural, one{သင့်အနီးတွင် J’Donut ဆိုင် ၁ ဆိုင် ရှိပါသည်။} other{သင့်အနီးတွင် J’Donut ဆိုင် {count} ဆိုင် ရှိပါသည်။}} 😊",
+  "@nearbyShops": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "nearbyShopsTitle": "အနီးအနားရှိ ဆိုင်များ",
+  "exploreNow": "ခုပဲ ကြည့်ရှုမည်",
+  "orderOnline": "အွန်လိုင်းမှ မှာယူရန်",
+  "discountBadge": "{percent}% လျှော့စျေး",
+  "@discountBadge": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "moreInSection": "{section} တွင် ထပ်မံကြည့်ရန်",
+  "@moreInSection": {
+    "placeholders": {
+      "section": {
+        "type": "String"
+      }
+    }
+  },
+  "newProduct": "အသစ်",
+  "productDescriptionTitle": "အသေးစိတ် အချက်အလက်",
+  "addToCart": "စျေးဝယ်လှည်းထဲထည့်မည်",
+  "cartItemCount": "စျေးဝယ်လှည်း၊ ပစ္စည်း {count} ခု",
+  "@cartItemCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addedToCart": "စျေးဝယ်လှည်းထဲ ထည့်ပြီးပါပြီ",
+  "priceMmk": "{amount} ကျပ်",
+  "@priceMmk": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "decreaseQuantity": "အရေအတွက် လျှော့ရန်",
+  "increaseQuantity": "အရေအတွက် တိုးရန်",
+  "quantityLabel": "အရေအတွက် {count}",
+  "@quantityLabel": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "productLoadError": "ဤမုန့်အကြောင်း အချက်အလက်များကို ရယူ၍ မရပါ။",
+  "productNotFound": "ဤမုန့်ကို ရှာမတွေ့ပါ။",
+  "rewardsTitle": "J’ Donuts အထူးဆုများ",
+  "rewardsBadge": "ဆုလက်ဆောင်များ",
+  "replayRewards": "ဆုလက်ဆောင် အန်နီမေးရှင်း ပြန်ပြရန်",
+  "replayChallenge": "စိန်ခေါ်မှု တိုးတက်မှုကို ပြန်ပြရန်",
+  "totalRewardPoints": "စုစုပေါင်း ရမှတ်",
+  "rewardsPointsTotal": "{points}",
+  "@rewardsPointsTotal": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "currentRewardTier": "လက်ရှိ ရောက်ရှိနေသည့် အဆင့်",
+  "upcomingRewardTier": "မကြာမီ ရောက်ရှိမည့် အဆင့်",
+  "nextRewardTier": "{tier} ဖြစ်လာရန်\n{points} မှတ် လိုသေးသည်",
+  "@nextRewardTier": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      },
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "earnMoreTab": "ပိုစား ပိုရ",
+  "giftTab": "လက်ဆောင်",
+  "emptyGifts": "လက်ဆောင် မရှိသေးပါ",
+  "emptyChallenges": "လက်ရှိတွင် စိန်ခေါ်မှုများ မရှိသေးပါ",
+  "rewardsLoading": "ဆုလက်ဆောင်များ ရယူနေသည်",
+  "rewardsLoadError": "ဆုလက်ဆောင်များကို ရယူ၍ မရပါ။",
+  "earnReward": "ရမှတ်ယူမည်",
+  "challengeQuantity": "{completed}/{target}",
+  "@challengeQuantity": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "challengePoints": "{points} မှတ်",
+  "@challengePoints": {
+    "placeholders": {
+      "points": {
+        "type": "int",
+        "format": "decimalPattern"
+      }
+    }
+  },
+  "language": "ဘာသာစကား",
+  "languageSaveError": "ဘာသာစကားကို သိမ်းဆည်း၍ မရပါ။ ထပ်မံကြိုးစားပါ။"
+}

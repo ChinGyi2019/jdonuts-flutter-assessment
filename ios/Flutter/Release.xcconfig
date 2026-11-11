@@ -1,0 +1,7 @@
+#include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"
+#include "Generated.xcconfig"
+
+// Workaround for flutter/flutter#188461: Xcode 27's lipo -verify_arch accepts
+// only one architecture per call, so universal builds fail during unpack.
+// Build the arm64 slice only (Xcode's default on Apple Silicon devices).
+ARCHS = arm64
