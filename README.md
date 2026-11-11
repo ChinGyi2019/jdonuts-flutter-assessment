@@ -24,7 +24,13 @@ To try offline mode, enable airplane mode and disable Wi-Fi before opening a fre
 | Onboarding and authentication | Separate registration and returning login flows with Myanmar phone normalization, numeric OTP entry and paste, resend countdown and attempt limits, and name and age validation. Registration is stored locally. Secure storage retains the active member ID, and GoRouter guards signed-in routes. |
 | Offline Home and Product detail | Drift supplies a reactive catalog seeded from bundled JSON. Home shows a banner carousel, product sections, nearby shops, and the signed-in member’s tier. Product tiles open `/product/:id` with an image Hero transition, quantity controls, and a live MMK total. |
 | Rewards | Home and Rewards read the same member and tier data. Rewards animates the points count and ring, tier progress, badge, tab indicator, and challenge artwork. The completed challenge gives press feedback. |
-| Motion and accessibility | Staggered onboarding and Welcome entrances, registration progress, OTP shake, Home skeletons and section entrances, a sliding navigation pill, and reduced-motion support. English and Burmese UI strings are generated from ARB files. |
+| Onboarding and Welcome motion | Onboarding brings the donut illustrations in one at a time, then lets them float gently. Welcome scrolls two columns of donut artwork in opposite directions and staggers the entrance of the title and **Let’s explore** button. Both screens respect the system’s reduced-motion preference. |
+| Motion and accessibility | Animated registration progress, OTP shake, Home skeletons and section entrances, a sliding navigation pill, and reduced-motion support. |
+
+## Bonus features
+
+- **Burmese (မြန်မာ) translation.** Switch between English and Burmese in Settings. The app remembers the language between launches and uses Flutter’s generated localizations from ARB files.
+- **Fly-to-cart animation.** Tap **Add to cart** on Product Detail to send the product artwork along an arc into the cart icon. The icon pulses as the item count updates. With reduced motion enabled, the count updates without the flight.
 
 ## Architecture and offline behavior
 
