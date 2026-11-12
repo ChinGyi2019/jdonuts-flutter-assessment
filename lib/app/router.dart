@@ -17,7 +17,6 @@ import 'shell.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   final refresh = ValueNotifier<int>(0);
-  ref.listen(sessionProvider, (_, _) => refresh.value++);
   final router = GoRouter(
     initialLocation: '/home',
     refreshListenable: refresh,
@@ -124,6 +123,15 @@ final routerProvider = Provider<GoRouter>((ref) {
     ],
     errorBuilder: (_, _) => const NotFoundScreen(),
   );
+  ref.listen(sessionProvider, (previous, next) {
+    if (previous?.value != null &&
+        next is AsyncData<String?> &&
+        next.value == null) {
+      router.go('/onboarding');
+    } else {
+      refresh.value++;
+    }
+  });
   ref.onDispose(() {
     router.dispose();
     refresh.dispose();

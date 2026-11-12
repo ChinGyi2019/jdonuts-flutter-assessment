@@ -101,6 +101,17 @@ void main() {
     final style = tester.widget<FilledButton>(button).style!;
     expect(style.backgroundColor!.resolve({}), AppColors.catalogPink);
     expect(find.text('Log out').hitTestable(), findsOneWidget);
+
+    await tester.tap(button);
+    await tester.pumpAndSettle();
+    expect(
+      find.widgetWithText(ElevatedButton, 'Log out').hitTestable(),
+      findsOneWidget,
+    );
+    expect(
+      find.widgetWithText(ElevatedButton, 'Cancel').hitTestable(),
+      findsOneWidget,
+    );
     expect(tester.takeException(), isNull);
   });
 
@@ -128,14 +139,41 @@ void main() {
     expect(reads, 2);
   });
 
-  testWidgets('disables logout while pending and allows retry after failure', (
-    tester,
-  ) async {
+  testWidgets('confirms logout and allows retry after failure', (tester) async {
     final store = _DeferredSessionStore();
     await tester.pumpWidget(_screen(store: store));
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Log out'));
+    await tester.pumpAndSettle();
+    expect(find.text('Log out of your account?'), findsOneWidget);
+    expect(
+      find.text('You’ll need to sign in again to access your account.'),
+      findsOneWidget,
+    );
+    final cancel = find.widgetWithText(ElevatedButton, 'Cancel');
+    final confirm = find.widgetWithText(ElevatedButton, 'Log out');
+    expect(
+      tester.widget<ElevatedButton>(cancel).style?.backgroundColor?.resolve({}),
+      Colors.grey.shade300,
+    );
+    expect(
+      tester
+          .widget<ElevatedButton>(confirm)
+          .style
+          ?.backgroundColor
+          ?.resolve({}),
+      AppColors.catalogPink,
+    );
+    expect(store.clearCalls, 0);
+    await tester.tap(cancel);
+    await tester.pumpAndSettle();
+    expect(find.byType(AlertDialog), findsNothing);
+    expect(store.clearCalls, 0);
+
+    await tester.tap(find.text('Log out'));
+    await tester.pumpAndSettle();
+    await tester.tap(confirm);
     await tester.pump();
     final button = find.bySubtype<FilledButton>();
     expect(tester.widget<FilledButton>(button).onPressed, isNull);

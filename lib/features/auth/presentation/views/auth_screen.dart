@@ -315,11 +315,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
         vm.setPhone(value);
         setState(() {});
       },
-      error: phoneTouched && _validatedPhone(phone.text) == null
-          ? phone.text.isNotEmpty && !_hasPhonePrefix(phone.text)
-                ? s.phonePrefixError
-                : s.phoneError
-          : null,
+      error: _phoneError(s),
     ),
     if (state.error == 'unknown_phone')
       Wrap(
@@ -519,7 +515,8 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
 
   VoidCallback? _submit(AuthState state, AuthViewModel vm) =>
       switch (state.step) {
-        AuthStep.phone => _phoneSubmit(vm),
+        AuthStep.phone =>
+          _hasPhoneValidationError ? null : () => _onPhoneContinue(vm),
         AuthStep.otp =>
           isValidOtp(otp.text) && !state.otpLocked
               ? () async {
@@ -541,22 +538,23 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
         _ => null,
       };
 
-  VoidCallback? _phoneSubmit(AuthViewModel vm) {
-    return _validatedPhone(phone.text) == null
-        ? null
-        : () => _onPhoneContinue(vm);
+  bool get _hasPhoneValidationError =>
+      phoneTouched && normalizeMyanmarPhone(phone.text) == null;
+
+  String? _phoneError(AppLocalizations s) {
+    if (!_hasPhoneValidationError) return null;
+    final value = phone.text.replaceAll(RegExp(r'[\s-]'), '');
+    if (value.isEmpty ||
+        value.startsWith('09') ||
+        value.startsWith('9') ||
+        value.startsWith('+95')) {
+      return s.phoneError;
+    }
+    return s.phonePrefixError;
   }
 
-  bool _hasPhonePrefix(String value) =>
-      value.startsWith('09') ||
-      value.startsWith('9') ||
-      value.startsWith('+95');
-
-  String? _validatedPhone(String value) => normalizeMyanmarPhone(value);
-
   void _onPhoneContinue(AuthViewModel vm) {
-    final normalized = _validatedPhone(phone.text);
-    if (normalized != null) {
+    if (normalizeMyanmarPhone(phone.text) != null) {
       vm.submitPhone();
     } else {
       setState(() {

@@ -13,7 +13,7 @@ fvm flutter devices
 fvm flutter run -d <device-id>
 ```
 
-Select **Let’s get started**, enter a Myanmar mobile number such as `09254135592`, and use the demo OTP **`123456`**. Complete your name and birthday, then tap **Let’s explore**. You can sign out in Settings and sign back in with the same number. The app retains the registration and restores an active session when reopened.
+Select **Let’s get started**, enter a Myanmar mobile number such as `09254135592`, and use the demo OTP **`123456`**. Complete your name and birthday, then tap **Let’s explore**. In Settings, tap **Log out** and confirm to return to onboarding. Sign back in with the same number to open Home. The app retains the registration and restores an active session when reopened.
 
 To try offline mode, enable airplane mode and disable Wi-Fi before opening a fresh install. Register locally, then visit Home, a product, and Rewards. Reconnect to trigger a background refresh, or pull down on Home to refresh manually.
 
@@ -53,13 +53,13 @@ Drift is the source of truth for the catalog and member data. A versioned seed t
 ```sh
 fvm flutter analyze
 fvm flutter test
-fvm flutter test integration_test/registration_catalog_test.dart -d <device-id>
+fvm flutter test integration_test -d <device-id>
 fvm flutter build apk --release
 fvm flutter build ios --simulator --no-codesign
 ditto -c -k --sequesterRsrc --keepParent build/ios/iphonesimulator/Runner.app JDonuts-iOS-Simulator.zip
 ```
 
-The registration journey uses seeded Drift data and simulated offline status. The separate artwork check exercises a compact viewport at 1.3× text size with motion enabled and reduced. If provider, schema, or ARB inputs change, regenerate with `fvm dart run build_runner build` and `fvm flutter gen-l10n`.
+The registration journey uses seeded Drift data and simulated offline status. It opens Product Detail, cancels and confirms logout in Settings, and verifies that returning login opens Home. The separate artwork check exercises a compact viewport at 1.3× text size with motion enabled and reduced. If provider, schema, or ARB inputs change, regenerate with `fvm dart run build_runner build` and `fvm flutter gen-l10n`.
 
 The APK is written to `build/app/outputs/flutter-apk/app-release.apk`. It uses the Android debug signing key for sideloading. To install the unzipped Simulator build, boot the target Simulator and run `xcrun simctl install booted Runner.app` from the extracted directory.
 
@@ -67,4 +67,4 @@ The APK is written to `build/app/outputs/flutter-apk/app-release.apk`. It uses t
 
 Authentication, social sign-in, cart feedback, and rewards redemption are demo flows. No real SMS, checkout, or redemption service is connected. The bundled catalog is the refresh source. Android and iOS Simulator are the delivery targets, and browser SQLite is outside this build. Physical-device frame pacing was not benchmarked for this submission.
 
-Time spent on implementation and validation was **14 hours 27 minutes**, from 9:00 AM to 11:27 PM on 11 November 2026 (Bangkok time, UTC+7).
+Time spent on implementation and validation was **25 hours 38 minutes**, from 9:00 AM on 11 November 2026 to 10:38 AM on 12 November 2026.

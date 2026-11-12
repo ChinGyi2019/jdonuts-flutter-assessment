@@ -38,6 +38,16 @@ class AppLocalizationsMy extends AppLocalizations {
   String get logout => 'အကောင့်ထွက်ရန်';
 
   @override
+  String get logoutConfirmationTitle => 'အကောင့်မှ ထွက်မလား။';
+
+  @override
+  String get logoutConfirmationMessage =>
+      'သင့်အကောင့်ကို ပြန်လည်အသုံးပြုရန် အကောင့်ပြန်ဝင်ရပါမည်။';
+
+  @override
+  String get cancel => 'မလုပ်တော့ပါ';
+
+  @override
   String get loggingOut => 'အကောင့်ထွက်နေသည်…';
 
   @override

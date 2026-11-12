@@ -105,7 +105,6 @@ void main() {
     await tester.tap(find.text('Log In'));
     await tester.pumpAndSettle();
     final button = find.widgetWithText(FilledButton, 'CONTINUE');
-    expect(tester.widget<FilledButton>(button).onPressed, isNull);
     await tester.enterText(find.byType(TextField), '09254135592');
     await tester.pump();
     await tester.tap(button);
@@ -117,51 +116,48 @@ void main() {
     await tester.pumpWidget(const SizedBox());
   });
 
-  testWidgets(
-    'phone continue stays disabled for invalid input and validates on blur',
-    (tester) async {
-      await tester.pumpWidget(
-        ProviderScope(
-          overrides: [authRepositoryProvider.overrideWithValue(StubAuth())],
-          child: const MaterialApp(
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            home: AuthScreen(),
-          ),
+  testWidgets('phone continue shows an error for empty or incomplete input', (
+    tester,
+  ) async {
+    final repository = StubAuth();
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [authRepositoryProvider.overrideWithValue(repository)],
+        child: const MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: AuthScreen(),
         ),
-      );
-      await tester.tap(find.text('Log In'));
-      await tester.pumpAndSettle();
+      ),
+    );
+    await tester.tap(find.text('Log In'));
+    await tester.pumpAndSettle();
 
-      final button = find.widgetWithText(FilledButton, 'CONTINUE');
-      expect(tester.widget<FilledButton>(button).onPressed, isNull);
+    final button = find.widgetWithText(FilledButton, 'CONTINUE');
+    final field = find.byType(TextField);
+    final error = find.text('Enter a valid Myanmar phone number.');
+    expect(tester.widget<FilledButton>(button).onPressed, isNotNull);
+    expect(error, findsNothing);
+    await tester.tap(button);
+    await tester.pumpAndSettle();
+    expect(error, findsOneWidget);
+    expect(tester.widget<FilledButton>(button).onPressed, isNull);
+    expect(repository.checks, 0);
 
-      // Typing an invalid number and clicking continue
-      await tester.enterText(find.byType(TextField), '12345');
-      await tester.pump();
-      tester.widget<TextField>(find.byType(TextField)).focusNode!.unfocus();
-      await tester.pumpAndSettle();
+    await tester.enterText(field, '09');
+    await tester.pumpAndSettle();
+    expect(error, findsOneWidget);
+    expect(tester.widget<FilledButton>(button).onPressed, isNull);
+    expect(repository.checks, 0);
 
-      // If failed, continue button stays disabled and inline message appears once field loses focus
-      expect(tester.widget<FilledButton>(button).onPressed, isNull);
-      expect(
-        find.text('Phone number must start with 09 or 9.'),
-        findsOneWidget,
-      );
-
-      // User types a valid number
-      await tester.enterText(find.byType(TextField), '09254135592');
-      await tester.pump();
-      // Continue button is re-enabled
-      expect(tester.widget<FilledButton>(button).onPressed, isNotNull);
-      expect(find.text('Phone number must start with 09 or 9.'), findsNothing);
-
-      // Clicking continue changes form to +959254135592 and advances
-      await tester.tap(button);
-      await tester.pumpAndSettle();
-      expect(find.text('Number not registered.'), findsOneWidget);
-    },
-  );
+    await tester.enterText(field, '09254135592');
+    await tester.pump();
+    expect(error, findsNothing);
+    await tester.tap(button);
+    await tester.pumpAndSettle();
+    expect(repository.checks, 1);
+    expect(find.text('Number not registered.'), findsOneWidget);
+  });
   for (final (locale, continueLabel, error) in [
     (const Locale('en'), 'CONTINUE', 'Phone number must start with 09 or 9.'),
     (
@@ -189,7 +185,9 @@ void main() {
       );
       final button = find.widgetWithText(FilledButton, continueLabel);
       await tester.enterText(find.byType(TextField), '123456789');
-      tester.widget<TextField>(find.byType(TextField)).focusNode!.unfocus();
+      await tester.pump();
+      expect(find.text(error), findsNothing);
+      await tester.tap(button);
       await tester.pumpAndSettle();
       expect(find.text(error), findsOneWidget);
       expect(tester.widget<FilledButton>(button).onPressed, isNull);

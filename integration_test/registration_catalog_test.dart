@@ -5,19 +5,23 @@ import 'package:code_test_madivizion/core/connectivity/connectivity_providers.da
 import 'package:code_test_madivizion/core/storage/app_database.dart';
 import 'package:code_test_madivizion/core/storage/storage_providers.dart';
 import 'package:code_test_madivizion/features/home/domain/entities/home_catalog.dart';
+import 'package:code_test_madivizion/features/home/presentation/views/home_screen.dart';
 import 'package:code_test_madivizion/features/home/presentation/widgets/home_product_section.dart';
 import 'package:code_test_madivizion/features/settings/presentation/viewmodels/language_preference.dart';
+import 'package:code_test_madivizion/features/settings/presentation/views/settings_screen.dart';
 import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   testWidgets(
-    'registers, explores the offline catalog, and opens Coconut Donut',
+    'registers offline, opens a product, and returns Home after logging in again',
     (tester) async {
       final database = AppDatabase(NativeDatabase.memory());
       addTearDown(database.close);
@@ -57,6 +61,18 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Increase quantity'));
       await _waitFor(tester, find.text('6,400 MMK'));
+
+      await tester.tap(find.byTooltip('Back'));
+      await tester.pumpAndSettle();
+      await _logOutFromSettings(tester);
+      await _enterPhoneAndOtp(tester, entry: 'Log In');
+
+      final home = find.byType(HomeScreen);
+      await _waitFor(tester, home);
+      await tester.pumpAndSettle();
+      expect(find.text('You’re offline'), findsOneWidget);
+      expect(find.byType(SettingsScreen, skipOffstage: false), findsNothing);
+      expect(GoRouter.of(tester.element(home)).canPop(), isFalse);
       await tester.pumpWidget(const SizedBox.shrink());
     },
   );
@@ -68,18 +84,7 @@ class _EnglishLanguagePreference extends LanguagePreference {
 }
 
 Future<void> _register(WidgetTester tester) async {
-  final start = find.text('LET’S GET STARTED');
-  await _waitFor(tester, start);
-  await tester.tap(start);
-  await _waitFor(tester, find.widgetWithText(TextField, 'Mobile number'));
-  await tester.enterText(find.byType(TextField), '09254135592');
-
-  await _continue(tester);
-  final otp = find.byKey(const ValueKey('otp-input'));
-  await _waitFor(tester, otp);
-  await tester.enterText(otp, '123456');
-
-  await _continue(tester);
+  await _enterPhoneAndOtp(tester, entry: 'LET’S GET STARTED');
   final firstName = find.widgetWithText(TextField, 'First Name');
   await _waitFor(tester, firstName);
   await tester.enterText(firstName, 'Hania');
@@ -96,6 +101,57 @@ Future<void> _register(WidgetTester tester) async {
   await _continue(tester);
 
   await _waitFor(tester, find.text('LET’S EXPLORE'));
+}
+
+Future<void> _enterPhoneAndOtp(
+  WidgetTester tester, {
+  required String entry,
+}) async {
+  final start = find.text(entry);
+  await _waitFor(tester, start);
+  await tester.ensureVisible(start);
+  await tester.tap(start);
+  final phone = find.widgetWithText(TextField, 'Mobile number');
+  await _waitFor(tester, phone);
+  await tester.enterText(phone, '09254135592');
+  await _continue(tester);
+
+  final otp = find.byKey(const ValueKey('otp-input'));
+  await _waitFor(tester, otp);
+  await tester.enterText(otp, '123456');
+  await _continue(tester);
+}
+
+Future<void> _logOutFromSettings(WidgetTester tester) async {
+  await tester.tap(find.byIcon(LucideIcons.settings));
+  await tester.pumpAndSettle();
+  final settings = find.byType(SettingsScreen);
+  final logout = find.descendant(of: settings, matching: find.text('Log out'));
+  await tester.scrollUntilVisible(
+    logout,
+    160,
+    scrollable: find.descendant(
+      of: settings,
+      matching: find.byType(Scrollable),
+    ),
+  );
+  await tester.tap(logout);
+  await tester.pumpAndSettle();
+  expect(find.text('Log out of your account?'), findsOneWidget);
+  await tester.tap(find.widgetWithText(ElevatedButton, 'Cancel'));
+  await tester.pumpAndSettle();
+  expect(settings, findsOneWidget);
+  expect(find.byType(AlertDialog), findsNothing);
+
+  await tester.tap(logout);
+  await tester.pumpAndSettle();
+  await tester.tap(find.widgetWithText(ElevatedButton, 'Log out'));
+  await _waitFor(tester, find.text('Log In'));
+  await tester.pump(const Duration(milliseconds: 500));
+  expect(
+    find.byType(StatefulNavigationShell, skipOffstage: false),
+    findsNothing,
+  );
 }
 
 Future<void> _finishWelcomeEntrance(WidgetTester tester) async {

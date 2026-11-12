@@ -5,8 +5,8 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../../../../app/session.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../l10n/app_localizations.dart';
-import '../widgets/settings_profile_card.dart';
 import '../viewmodels/language_preference.dart';
+import '../widgets/settings_profile_card.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -60,7 +60,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       children: [
                         Expanded(
                           child: Text(
-                            strings.language + (isMyanmar ? ' (မြန်မာ)' : ' (English)'),
+                            strings.language +
+                                (isMyanmar ? ' (မြန်မာ)' : ' (English)'),
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ),
@@ -155,6 +156,39 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   Future<void> _logOut() async {
     if (_loggingOut) return;
+    final strings = AppLocalizations.of(context)!;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        backgroundColor: AppColors.white,
+        scrollable: true,
+        title: Text(strings.logoutConfirmationTitle),
+        content: Text(strings.logoutConfirmationMessage),
+        actions: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.grey.shade300,
+              foregroundColor: AppColors.catalogText,
+            ),
+            onPressed: () => Navigator.of(dialogContext).pop(false),
+            child: Text(strings.cancel),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.catalogPink,
+              foregroundColor: AppColors.catalogText,
+            ),
+            onPressed: () => Navigator.of(dialogContext).pop(true),
+            child: Text(
+              strings.logout,
+              style: const TextStyle(color: AppColors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (!mounted || confirmed != true || _loggingOut) return;
+
     setState(() => _loggingOut = true);
     try {
       await ref.read(sessionProvider.notifier).signOut();
